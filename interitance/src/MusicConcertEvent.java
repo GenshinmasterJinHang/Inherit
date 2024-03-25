@@ -1,15 +1,21 @@
 public class MusicConcertEvent extends Event{
     private boolean merchandiseRequired;
     private double merchandiseCost;
-    
+    private double MusicConcertEventCost;
 
+    public double getMusicConcertEventCost() {
+        return MusicConcertEventCost;
+    }
+    public void setMusicConcertEventCost(double musicConcertEventCost) {
+        MusicConcertEventCost = musicConcertEventCost;
+    }
     public MusicConcertEvent() {
         
     }
-    public MusicConcertEvent(String eventID, String eventName, String eventLocation, String eventPointOfContact,
+    public MusicConcertEvent(String eventID, String eventName, String eventLocation, String PointOfContact,
             double eventCost, int totalParticipants, int totalEventDays, boolean merchandiseRequired,
             double merchandiseCost) {
-        super(eventID, eventName, eventLocation, eventPointOfContact, eventCost, totalParticipants, totalEventDays);
+        super(eventID, eventName, eventLocation, PointOfContact ,totalParticipants, totalEventDays);
         this.merchandiseRequired = merchandiseRequired;
         this.merchandiseCost = merchandiseCost;
         
@@ -29,12 +35,12 @@ public class MusicConcertEvent extends Event{
     
     
     @Override
-    public double calculateEventCost(){
-        double t = 0;
+    public void calculateEventCost(){
+        
         if(merchandiseRequired){
-            t +=getMerchandiseCost()*super.getTotalParticipants()+super.getEventCost();
+            MusicConcertEventCost +=getMerchandiseCost()*super.getTotalParticipants()+super.getEventCost();
         }
-        return t;
+        
     }
     @Override
     public String toString() {
